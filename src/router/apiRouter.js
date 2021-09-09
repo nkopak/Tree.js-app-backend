@@ -1,11 +1,11 @@
 const router = require("express").Router()
 
-const userRouter = require("./userRouter")
+const stateRouter = require("./stateRouter")
 
-router.get("/", (req, res) => {
+router.get("/api", (req, res) => {
   res.json("Api router")
 })
 
-router.use("/user", userRouter)
+router.use("/api/state", stateRouter)
 
 module.exports = router
