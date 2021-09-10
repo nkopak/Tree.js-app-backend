@@ -3,8 +3,6 @@ const stateService = require("../service/stateService")
 module.exports = {
   saveState: async (req, res) => {
     try {
-      console.log(req.body)
-
       let response
       let statusCode
 
@@ -19,7 +17,8 @@ module.exports = {
       }
 
       if (!isStateRegistered) {
-        response = await stateService.saveState(req.body)
+        response = await stateService.saveState(id, req.body)
+        console.log(response)
         statusCode = 201
       }
 
