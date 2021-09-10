@@ -1,7 +1,7 @@
 const express = require("express")
 const apiRouter = require("./router/apiRouter")
 const mongoose = require("mongoose")
-
+const path = require("path")
 require("dotenv").config()
 
 const app = express()
@@ -10,7 +10,19 @@ app.use(express.urlencoded({ extended: true }))
 
 connectDB()
 
+app.use(
+  express.static(path.join(__dirname, "..", "..", "frontend/dist/test-threejs"))
+)
+
+console.log(__dirname)
+
 app.use("/", apiRouter)
+
+app.get("/", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "..", "frontend/dist/test-threejs/index.html")
+  )
+})
 
 const PORT = process.env.PORT
 
