@@ -4,6 +4,6 @@ const router = require("express").Router()
 
 router.get("/:id", stateController.getStateById)
 
-router.post("/", stateController.createState)
+router.post("/", stateController.saveState)
 
 module.exports = router
